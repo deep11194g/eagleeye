@@ -1,0 +1,65 @@
+EagleEye: Separating the wheat from the chaff
+=============================================
+
+URL: http://genetics.bwh.harvard.edu/cgi-bin/msfilter/eagleeye.cgi
+
+Please cite:
+
+Junqueira, M., Spirin, V., Balbuena, T.S., Waridel, P., Surendranath, V.,
+Kryukov, G., Adzhubei, I., Thomas, H., Sunyaev, S. and Shevchenko, A.
+Separating the wheat from the chaff: unbiased filtering of background
+tandem mass spectra improves protein identification.
+J Proteome Res 7(8):3382-95 (2008).
+
+
+Installation
+============
+
+Prerequisites:
+  - Perl 5.8.6 or later; 5.8.8 was the latest version tested
+  - Perl modules: CGI.pm, File::Temp, File::Spec, File::Basename
+    (included as standard in most Perl distributions)
+  - GNU fileutils: cp, mv, tar (if tar archives support is required, e.g.
+    for input files in .dta format)
+  - unzip and gunzip commands (if zip and gzip compressed archives
+    support is required)
+  - GCC development suite, including GNU g++ compiler
+
+Unpack the EagleEye archive:
+
+   $ tar vxjf EagleEye.tar.bz2
+
+Change into eagleeye/src directory and compile msfilter:
+
+   $ cd eagleeye/src
+   $ g++ -O2 -s -o msfilter msfilter.cc correlations_eagle_eye_bins_6norms.cc
+
+Move compiled msfilter binary into a directory in your $PATH, e.g.:
+
+   # mv msfilter /usr/local/bin/
+
+   (you will need root privileges for that)
+
+Run EagleEye with your data, e.g.:
+
+   $ /opt/eagleeye/run_eagleeye.pl -s1 -d "Test 1" myspectra.mgf
+
+   You can execute run_eagleeye.pl without parameters to see brief
+   usage instructions.
+
+   Output files will be written into current working directory. Report log
+   will be printed to standard output. Note that output files are named
+   after the input data file specified on command line; if files with the
+   same name already exist in the current directory they are silently
+   overwritten. To avoid this (e.g. when running multiple instances of
+   EagleEye simultaneously on an SMP computer or cluster nodes with shared
+   filesystem tree) you can use -x command-line switch and specify unique
+   suffix to be appended to the output filenames, e.g.:
+
+   $ /opt/eagleeye/run_eagleeye.pl -s1 -d "Test 1" -x test1 myspectra.mgf >eagleeye1.log 2>&1 &
+   $ /opt/eagleeye/run_eagleeye.pl -s2 -d "Test 2" -x test2 myspectra.mgf >eagleeye2.log 2>&1 &
+   $ /opt/eagleeye/run_eagleeye.pl -p0.01 -f0.5 -a0.05 -d "Test 3" -x test3 myspectra.mgf >eagleeye3.log 2>&1 &
+   
+For questions and comments, please contact:
+Ivan Adzhubey <iadzhubey@rics.bwh.harvard.edu>
+Last modified: 08/15/2012
