@@ -65,10 +65,18 @@ Ivan Adzhubey <iadzhubey@rics.bwh.harvard.edu>
 Last modified: 08/15/2012
 
 
-## Notes
+## Setup
+--------
+
+- Download the Github repo
+- Download "data" dir from this link and place it at repo's root https://cloud.mpi-cbg.de/index.php/s/XwHKvFvUFOyskyX
+- Follow above steps to compile files with g++ to create the `msfilter` executable (ignore warnings)
+
+
+## Notes (Deep)
 --------
 
 - Usually a MS experiment (aimed at molecule identification) reports a lot of noise
 - EagleEye is targetted to reduce noise irrespective of origin (filtering)
 - Filtering improves protein identification capacity (search against DB)
-https://repository.jpostdb.org/entry/JPST000845
+- Repo with possible test MGF files https://repository.jpostdb.org/entry/JPST000845
