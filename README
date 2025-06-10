@@ -63,3 +63,12 @@ Run EagleEye with your data, e.g.:
 For questions and comments, please contact:
 Ivan Adzhubey <iadzhubey@rics.bwh.harvard.edu>
 Last modified: 08/15/2012
+
+
+## Notes
+--------
+
+- Usually a MS experiment (aimed at molecule identification) reports a lot of noise
+- EagleEye is targetted to reduce noise irrespective of origin (filtering)
+- Filtering improves protein identification capacity (search against DB)
+https://repository.jpostdb.org/entry/JPST000845

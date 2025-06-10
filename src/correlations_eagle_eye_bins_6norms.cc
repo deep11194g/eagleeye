@@ -341,7 +341,7 @@ void eagles_eye(spectrum *s1, spectrum *s2, double eye_catching_height, double &
 
 }
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 
   spectrum **spe_good = new(spectrum *[MAX_SPEC_GOOD]);
