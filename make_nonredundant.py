@@ -1,4 +1,5 @@
-import argparse
+# Scaffold created by GitHub Co-pilot
+
 import math
 import os
 import shutil
@@ -67,46 +68,27 @@ def select_nonredundant_files(
             num_non_red_files += 1
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Generate a non-redundant library from a table and DTA directory."
-    )
-    parser.add_argument(
-        "yourtable2",
-        type=str,
-        help="Input table file (yourtable2)"
-    )
-    parser.add_argument(
-        "smj",
-        type=float,
-        help="Score cutoff threshold (smj)"
-    )
-    parser.add_argument(
-        "msdata_temp_dir",
-        type=str,
-        help="Directory with input DTA files"
-    )
-    parser.add_argument(
-        "msdata_nonred_lib",
-        type=str,
-        help="Output directory for non-redundant DTA files"
-    )
-    args = parser.parse_args()
+def main(yourtable2: str, smj: float, msdata_temp_dir: str, msdata_nonred_lib: str) -> None:
+    """
+    :param yourtable2: Input table file (yourtable2)
+    :param smj: Score cutoff threshold (smj)
+    :param msdata_temp_dir: Directory with input DTA files
+    :param msdata_nonred_lib: Output directory for non-redundant DTA files
+    """
+    PV = parse_table(yourtable2)
 
-    PV = parse_table(args.yourtable2)
-
-    dta_files = glob(os.path.join(args.msdata_temp_dir, "*.dta"))
+    dta_files = glob(os.path.join(msdata_temp_dir, "*.dta"))
     if not dta_files:
-        raise FileNotFoundError(f"No data (.dta) files in directory: {args.msdata_temp_dir}")
+        raise FileNotFoundError(f"No data (.dta) files in directory: {msdata_temp_dir}")
 
-    if not os.path.exists(args.msdata_nonred_lib):
-        os.makedirs(args.msdata_nonred_lib)
+    if not os.path.exists(msdata_nonred_lib):
+        os.makedirs(msdata_nonred_lib)
 
     select_nonredundant_files(
         dta_files=dta_files,
         PV=PV,
-        smj=args.smj,
-        output_dir=args.msdata_nonred_lib
+        smj=smj,
+        output_dir=msdata_nonred_lib
     )
 
 

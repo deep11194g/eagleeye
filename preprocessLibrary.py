@@ -1,9 +1,16 @@
-import argparse
+# Scaffold created by GitHub Co-pilot
+
 import os
 from glob import glob
 
 
-def preprocess_library(library_dir, threshold):
+def main(library_dir: str, threshold: float) -> None:
+    """
+    Preprocess a user-supplied DTA library directory for EagleEye.
+
+    :param library_dir: Directory containing .dta files to preprocess
+    :param threshold: Threshold value for preprocessing
+    """
     dta_files = glob(os.path.join(library_dir, "*.dta"))
     for f in dta_files:
         if os.path.isfile(f):
@@ -42,26 +49,3 @@ def preprocess_library(library_dir, threshold):
                         print(theline[i], file=fout)
             # Replace original file with new file
             os.replace(f1, f)
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="Preprocess a user-supplied DTA library directory for EagleEye."
-    )
-    parser.add_argument(
-        "library_dir",
-        type=str,
-        help="Directory containing .dta files to preprocess"
-    )
-    parser.add_argument(
-        "threshold",
-        type=float,
-        help="Threshold value for preprocessing"
-    )
-    args = parser.parse_args()
-
-    preprocess_library(args.library_dir, args.threshold)
-
-
-if __name__ == "__main__":
-    main()

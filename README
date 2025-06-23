@@ -80,3 +80,9 @@ Last modified: 08/15/2012
 - EagleEye is targetted to reduce noise irrespective of origin (filtering)
 - Filtering improves protein identification capacity (search against DB)
 - Repo with possible test MGF files https://repository.jpostdb.org/entry/JPST000845
+
+### Done by me
+
+- Correction of signature in C++ code
+- Basic translation of Perl scripts to Python (all *.pl/cgi file have a respective .py) script with the help of Copilot
+- Tried running with given sample file and faced issued reading the file (what would be correct str of the input file?)

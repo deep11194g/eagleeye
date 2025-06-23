@@ -1,9 +1,10 @@
-# Co-pilot translation
+# Scaffold created by GitHub Co-pilot
 
 import argparse
 import tempfile
-import subprocess
 import os
+
+from eagleeye_cgi import main as eagleeye_cgi_main
 
 
 def main():
@@ -38,11 +39,10 @@ def main():
                 tmp.write(f"{k}={v}\n")
         tmp_name = tmp.name
 
-    # Call eagleeye.cgi (or main Python logic)
-    try:
-        subprocess.check_call([os.path.join(params["prjpath"], "eagleeye.cgi"), tmp_name])
-    finally:
-        os.remove(tmp_name)
+    eagleeye_cgi_main(qfile=tmp_name)
+
+    # Remove temp file
+    os.remove(tmp_name)
 
 
 if __name__ == "__main__":
